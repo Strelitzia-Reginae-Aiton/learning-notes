@@ -1,0 +1,621 @@
+\documentclass[a4paper,12pt]{report}
+\title{advanced mathematics}
+\author{Enuma Alish\\Reading Steiner}
+\date{\today}
+\usepackage{ctex}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{indentfirst}
+\usepackage{makeidx}
+\usepackage{tocloft}
+\usepackage{footmisc}
+\usepackage{footnpag}
+\usepackage{natbib}
+\usepackage{ntheorem}
+\usepackage{arydshln}
+\newtheorem{example}{Example}[section]       %例，整体编号
+\newtheorem{algorithm}{algorithm}[section]       %算法
+\newtheorem{theorem}{Theorem}[section]      %定理，按section编号
+\newtheorem{definition}{Definition}[section]     %定义
+\newtheorem{axiom}{Axiom}[section]       %公理
+\newtheorem{property}{Property}[section]     %性质
+\newtheorem{proposition}{Proposition}[section]       %命题
+\newtheorem{lemma}{Lemma}[section]       %引理
+\newtheorem{corollary}{Corollary}[section]       %推论
+\newtheorem{remark}{Remark}[section]     %注解
+\newtheorem{condition}{Condition}[section]       %条件
+\newtheorem{conclusion}{Conclusion}[section]     %结论
+\newtheorem{assumption}{Assumption}[section]     %假设
+\newtheorem*{proof}{Proof}    %证明
+\newtheorem*{solution}{Solution}    %解
+\newcommand{\st}{\operatorname{s.t.}}
+\makeatletter 
+\makeatother
+\begin{document}
+\everymath{\displaystyle}
+\maketitle
+\chapter{Anilyses}
+\section{function and limit}
+\subsection{the limit of sequence}
+\begin{definition}
+$\lim\limits_{n\rightarrow\infty}x_n=L\Leftrightarrow\forall\;\varepsilon>0,\exists\;,N>0,\;\st\;\forall\; n>N,n\in\mathbb{N}^+,\vert x_n-L\vert<\varepsilon$
+
+if the limit of the sequence exists,we call the sequence a convergent one;ot$\\$-herwise we call it a divergent one.
+if a sequence is monotonously increasing or monotonously decreasing,which is 
+\end{definition}
+\begin{example}
+    proof $\lim\limits_{n\rightarrow+\infty}{\displaystyle\frac{n+(-1)^n}{n}}=1$
+\end{example}
+\begin{proof}
+    $$\vert\displaystyle\frac{n+(-1)^n}{n}-1\vert=\vert\displaystyle\frac{(-1)^n}{n}\vert=\displaystyle\frac{1}{n}$$
+    $$\therefore let\;N=[\displaystyle\frac{1}{\varepsilon}],when\;n>N,\vert\displaystyle\frac{n+(-1)^n}{n}-1\vert<\varepsilon$$
+    $\qquad\mathbf{Q.E.D.}$
+\end{proof}
+\begin{example}
+    solve the limit of the sequence $x_n=q^n,\vert q\vert\in(-1,1)$
+\end{example}
+\begin{proof}
+    it is obvious that $when\;n>\displaystyle\frac{\ln\varepsilon}{\ln\vert q\vert},\vert q^n-0\vert<\varepsilon,\;so \lim\limits_{n\rightarrow\infty}{q^n}=0 $
+\end{proof}
+\begin{example}
+    proof that $\lim\limits_{x\rightarrow\infty}{\sqrt[n]{n}}=1 $ 
+\end{example}
+\begin{proof}
+    $$let;\sqrt[n]{n}-1=a$$
+    $$\therefore \sqrt[n]{n}=1+a$$
+    $$n=(1+a)^n=\sum\limits^{n}{i=0}\mathrm{C}^i_na^i>1+\displaystyle\frac{n(1+n)}{2}a^2$$
+    $$\therefore \displaystyle\frac{2}{n}>a^2$$
+    $$\therefore \vert\sqrt[n]{n}-1\vert<\sqrt{\frac{2}{n}}<\varepsilon$$
+    $$\therefore n>\displaystyle\frac{2}{\varepsilon^2}$$
+    $$\forall\;\varepsilon>0,\exists\;\,N,\st\;\forall\; n>N,n\in\mathbb{N}^+,\vert x_n-L\vert<\varepsilon$$
+    $\qquad\mathbf{Q.E.D.}$
+\end{proof}
+\begin{theorem}
+    if $\exists\; L,\st\;\lim\limits{n\rightarrow\infty}x_n=L$,there'll there exists unique one $L$
+\end{theorem}
+\begin{proof}
+    we will proof if by contradiction
+$$assum\;that\;\lim\limits_{n\rightarrow\infty}{x_n}=a,\lim\limits_{n\rightarrow\infty}{x_n}=b,a\neq b$$
+$$assum\;that\;when\;n>N_1,\vert x_n-a\vert<\varepsilon;when\;n>N_2,\vert x_n-b\vert<\varepsilon$$
+$$let;N=max{N_1,N_2},\vert x_n-a\vert<\varepsilon;and;\vert x_n-b\vert<\varepsilon$$
+$$when\;\varepsilon<\displaystyle\frac{\vert a-b\vert}{2},it's\;impossible\;for\;\vert x_n-a\vert<\varepsilon\;and\;\vert x_n-b\vert<\varepsilon$$$\qquad$to be true at the same time.
+so if a sequence have it's limit, it have and only have one limit.
+$\qquad\mathbf{Q.E.D.}$
+\end{proof}
+\begin{definition}
+    if $\exists\; M>0,\st\;\forall\; x_n\in [-M,M],n\in\mathbb{N}^+$,we call the sequence $x_n$ is a bounded one,otherwise we call it a unbounded one.
+\end{definition}
+\begin{theorem}
+    if $\lim\limits_{n\rightarrow\infty}{x_n}=a$,proof the sequence $x_n$ is a bounded one.
+\end{theorem}
+\begin{proof}
+    $$\exists\; N,\st\;\vert x_n-a\vert<1,when\;n>N$$
+    $$let;M=max{x_1,x_2,\cdots,x_N,\vert a\vert+1},\forall\; x_n,n\in\mathbb{N}^+,\st\;\vert x_n\vert<N$$
+$\qquad\mathbf{Q.E.D.}$
+\end{proof}
+\begin{theorem}
+    if $\lim\limits_{n\rightarrow\infty}{x_n}=a,a>0,\exists\; N,\forall\; n\in{n\vert n>N,n\in\mathbb{N}},\st\;;x_n>0$ 
+\end{theorem}
+\begin{proof}
+    $$\exists\; N,when\;n>N,\st\;\vert x_n-a\vert<\varepsilon,\varepsilon<a$$
+    $$when\;n>N,x_n\in(0,2a)$$
+$\qquad\mathbf{Q.E.D.}$
+\end{proof}
+\begin{definition}
+    construct a monotone increasing sequence ${a_n}$ which is also a infinite sequence,the sequence ${x_{a_n}}$ is called a sub-sequence of the sequence ${x_n}$
+\end{definition}
+\begin{theorem}
+    if $\lim\limits_{n\rightarrow\infty}{x_n}=a$,$\lim\limits_{n\rightarrow\infty}{a_n}=a$,${a_n}$ is a sub-sequence of the sequence ${x_n}$
+\end{theorem}
+\begin{proof}
+    $$\forall\;\varepsilon>0,\exists\; N\in\mathbb{N}^+,\st\;\vert x_n-L\vert<\varepsilon,if\;n>N$$
+    $$construct\;a\;sequence\;{b_n},\st\;x_{b_n}=a_n$$
+    $$\forall\; N,\exists\; N_1,when\;n>N_1,b_n>N.when\;n>N_1$$
+    $$so;\forall\;\varepsilon>0,\exists\; N_1\in\mathbb{N}^+,\st\;\vert a_n-L\vert<\varepsilon,if\;n>N_1\Leftrightarrow\lim\limits_{n\rightarrow\infty}{a_n}=a$$
+$\qquad\mathbf{Q.E.D.}$
+\end{proof}
+\begin{example}
+    Proof $\lim\limits_{k\rightarrow\infty}{\lim\limits_{n\rightarrow\infty}{\cos^{2n}(k!\pi x)}}=D(x)$ 
+\end{example}
+\begin{proof}
+    $$\text{when $k$ is big enough}$$
+    $$\text{when $x\in\mathbb{Q}$,let $x=\displaystyle\frac{p}{q},p,q\in\mathbb{Z}$}$$
+    $$\therefore \lim\limits_{n\rightarrow\infty}{\cos^{2n}(k!\pi x)}=\lim\limits_{n\rightarrow\infty}{1^{2n}}=1$$
+    $$\lim\limits_{k\rightarrow\infty}{1}=1\\$$
+    $$\text{when $x\in\mathbb{R}/\mathbb{Q}$,}\vert\cos^{2n}(k!\pi x)\vert<1$$
+    $$\lim\limits_{n\rightarrow\infty}{\cos^{2n}(k!\pi x)}=0$$
+    $$\lim\limits_{k\rightarrow\infty}{0}=0$$
+$$\therefore\lim\limits_{k\rightarrow\infty}{\lim\limits_{n\rightarrow\infty}{\cos^{2n}(k!\pi x)}}=D(x)$$
+$\qquad\mathbf{Q.E.D.}$
+\end{proof}
+\begin{example}
+    Prove $\lim\limits_{n\rightarrow\infty}{\sqrt[n]{n}}=1$
+\end{example}
+\begin{proof}
+    Assum that $\sqrt[n]{n}-1=a$
+    $$\therefore \sqrt[n]{n}=a+1$$
+    $$\therefore n=(a+1)^n=\sum\limits_{i=0}^{n}C_n^ia^i>1+\displaystyle\frac{n(n-1)}{2}a^2$$
+    $$\therefore n-1>\displaystyle\frac{n(n-1)}{2}a^2$$
+    $$\therefore a<\sqrt{\displaystyle\frac{2}{n}}$$
+    $$\therefore \vert\sqrt[n]{n}-1\vert<\sqrt{\displaystyle\frac{2}{n}}<\varepsilon$$
+    $$\therefore \displaystyle\frac{2}{n}<\varepsilon^2$$
+    $$n>\left[\displaystyle\frac{2}{\varepsilon^2}\right]$$
+    $$\qquad\mathbf{Q.E.D.}$$
+\end{proof}
+\subsection{the limit of function}
+\begin{definition}
+    $U(x_0, \delta)=(x_0-\delta,x_0+\delta),\delta>0$
+\end{definition}
+\begin{definition}
+    $\mathring{U}(x_0, \delta)=(x_0-\delta,x_0)\cup (x_0,x_0+\delta),\delta>0$
+\end{definition}
+\begin{definition}
+    $\forall\;\varepsilon>0,\exists\;\delta,\st\;\vert f(x)-A\vert<\varepsilon,when\;\vert x-x_0\vert<\delta\Leftrightarrow\lim\limits_{x\rightarrow x_0}f(x)=A\Leftrightarrow f(x)\rightarrow A,when\;x\rightarrow x_0$
+\end{definition}
+\begin{definition}
+    $\forall\;\varepsilon>0,\exists\;\delta,\st\;\vert f(x)-A\vert<\varepsilon,when\;x-x_0<\delta\Leftrightarrow\lim\limits_{x\rightarrow x_0^+}f(x)=A\Leftrightarrow f(x)\rightarrow A,when\;x\rightarrow x_0^+$
+This is called the right limit of function.Similarly,we can define the left limit of function.
+\end{definition}
+\begin{theorem}
+    $\lim\limits_{x\rightarrow x_0}f(x)=A\Leftrightarrow\lim\limits_{x\rightarrow x_0^+}f(x)=\lim\limits_{x\rightarrow x_0^-}f(x)=A$
+\end{theorem}
+\begin{example}
+    proof that$\lim\limits_{x\rightarrow x_0}f(x)=A\Leftrightarrow\lim\limits_{x\rightarrow x_0^+}f(x)=\lim\limits_{x\rightarrow x_0^-}f(x)=A$
+\end{example}
+\begin{proof}
+    $$\forall\;\varepsilon>0,\exists\;\delta_1>0,\st\;\vert f(x)-A\vert<\varepsilon,when\; x-x_0<\delta_1$$
+    $$\forall\;\varepsilon>0,\exists\;\delta_2>0,\st\;\vert f(x)-A\vert<\varepsilon,when\; x_0-x<\delta_2$$
+    $$let\;\delta=min{\delta_1,\delta_2}$$
+    $$\forall\;\varepsilon>0,\exists\;\delta,\st\;\vert f(x)-A\vert<\varepsilon,when\;\vert x-x_0\vert<\delta$$
+\end{proof}
+\begin{example}
+    proof that $\lim\limits_{x\rightarrow x_0}{\sqrt{x}}=\sqrt{x_0}$
+\end{example}
+\begin{proof}
+    $$\vert\sqrt{x}-\sqrt{x_0}\vert=\vert\displaystyle\frac{x-x_0}{\sqrt{x}+\sqrt{x_0}}\vert\leq \displaystyle\frac{1}{\sqrt{x_0}}\vert x-x_0\vert$$
+    $$\vert\sqrt{x}-\sqrt{x_0}\vert\leq\displaystyle\frac{1}{\sqrt{x_0}}\vert x-x_0\vert<\varepsilon$$
+    $$\therefore \delta<\sqrt{x_0}\varepsilon$$
+    $$\because x\in(0,+\infty)$$
+    $$\therefore \delta<x_0$$
+    $$\therefore \delta<min{\sqrt{x_0}\varepsilon,x_0}$$
+    $$\therefore \forall\;\varepsilon>0,\exists\;\delta<min{\sqrt{x_0}\varepsilon,x_0},\st\;\vert f(x)-A\vert<\varepsilon,when\;\vert x-x_0\vert<\delta$$
+    $\qquad\mathbf{Q.E.D.}$
+\end{proof}
+\begin{example}
+    proof that $\lim\limits_{x\rightarrow x_0}{x^n}=x_0^n$
+\end{example}
+\begin{proof}
+    $$\text{Proof $\lim\limits_{x\rightarrow x_0^+}{x^n}=x_0^n,x_0\in I$ first}$$
+    $$x^n-x_0^n<\varepsilon$$
+    $$\therefore \sqrt[n]{x_0^n}<x<\sqrt[n]{\varepsilon+x_0^n}$$
+    $$\text{Without loss of generality, }x_0^n-x^n<\varepsilon,\sqrt[n]{x_0^n-\varepsilon}<x<\sqrt[n]{x_0^n}$$
+    $$\therefore \delta\leq\min\{\sqrt[n]{\varepsilon+x_0^n}-x_0,x_0-\sqrt[n]{x_0^n-\varepsilon}\}$$
+    $\qquad\mathbf{Q.E.D.}$
+\end{proof}
+\begin{example}
+    solve $\lim\limits_{x\rightarrow0}{\displaystyle\frac{\tan x-x}{x-\sin x}}$
+\end{example}
+\begin{proof}
+$$\begin{aligned}
+    \lim\limits_{x\rightarrow0}{\displaystyle\frac{\tan x-x}{x-\sin x}}&=\lim\limits_{x\rightarrow0}{\displaystyle\frac{\tan x-\sin x-(x-\sin x)}{x-\sin x}}\\
+    &=-1+\lim\limits_{x\rightarrow0}{\displaystyle\frac{\tan x-\sin x}{x-\sin x}}\\
+    &=-1+\lim\limits_{x\rightarrow0}{\displaystyle\frac{\sec^2x-\cos x}{x-\cos x}}\\
+    &=-1+\lim\limits_{x\rightarrow0}{\displaystyle\frac{1-\cos^3x}{\cos^2x(1-\cos x)}}\\
+    &=\lim\limits_{x\rightarrow0}{\displaystyle\frac{1-cos^2x}{\cos^2x(1-\cos x)}}\\
+    &=2
+\end{aligned}$$
+\end{proof}
+\subsection{Infinity and infinitesimal}
+
+\section{Derivative and differential}
+\section{The differential median theorem and the application of the derivative}
+\subsection{The differential median theorem}
+\subsection{L'Hospital rule}
+\begin{example}
+    solve $\lim\limits_{x\rightarrow\frac{\pi}{2}}\displaystyle\frac{\ln\sin x}{(\pi-2x)^2}$ 
+\end{example}
+\begin{solution}
+    $$\begin{aligned}
+        \lim\limits_{x\rightarrow\frac{\pi}{2}}\displaystyle\frac{\ln\sin x}{(\pi-2x)^2}&=\lim\limits_{x\rightarrow\frac{\pi}{2}}{\displaystyle\frac{\cot x}{-4(\pi-2x)}}\\
+        &=-\displaystyle\frac{1}{4}\lim\limits_{x\rightarrow\frac{\pi}{2}}{\displaystyle\frac{1}{2}\csc^2x}\\
+        &=-\displaystyle\frac{1}{8}\\
+    \end{aligned}$$
+\end{solution}
+\begin{solution}
+    $$\begin{aligned}
+        \lim\limits_{x\rightarrow\frac{\pi}{2}}\displaystyle\frac{\ln\sin x}{(\pi-2x)^2}&=\lim\limits_{x\rightarrow\frac{\pi}{2}}{\displaystyle\frac{1+\sin x}{(\pi-2x)^2}}\\
+        &=\lim\limits_{x\rightarrow\frac{\pi}{2}}{\displaystyle\frac{\cos x}{-4(\pi-2x)}}\\
+        &=-\displaystyle\frac{1}{4}\lim\limits_{x\rightarrow\frac{\pi}{2}}{\displaystyle\frac{-\sin x}{-2}}\\
+        &=-\displaystyle\frac{1}{8}\\
+    \end{aligned}$$
+\end{solution}
+\section{Indefinite integral}
+\section{Definite integral}
+\begin{example}
+    solve $\int_0^1x^x\mathrm{d}x$    
+\end{example}
+\begin{solution}
+    $$x^x=e^{x\ln x}=1+\sum_{i=1}^\infty\displaystyle\frac{(x\ln x )^i}{i!}$$
+    $$\begin{aligned}
+        \therefore\int x^x\mathrm{d}x&=\int(1+\sum_{i=1}^\infty(\displaystyle\frac{(x\ln x )^i}{i!}))\mathrm{d}x\\
+        &=x+\int\sum_{i=1}^\infty\displaystyle\frac{(x\ln x )^i}{i!}\mathrm{d}x+C\\
+        &=x+\sum_{i=1}^\infty\int\displaystyle\frac{(x\ln x )^i}{i!}\mathrm{d}x+C\\
+    \end{aligned}$$
+    $$\begin{aligned}
+        \int (x\ln x)^i\mathrm{d}x=\displaystyle\frac{1}{(i+1)^{i+1}}\int\ln^ix^{i+1}\mathrm{d}x^{i+1}\\
+        \because \mathrm{d}t\ln^it=\ln^it\mathrm{d}t+i\ln^{i-1}t\mathrm{d}t\\
+        \therefore \int (x\ln x)^i\mathrm{d}x=\sum_{j=0}^i \displaystyle\frac{i!(-1)^j}{(i-j)!}t\ln^{i-j}t
+    \end{aligned}$$
+    $$\begin{aligned}
+        \therefore \int x^x\mathrm{d}x&=x+\sum_{i=1}^\infty\displaystyle\frac{1}{i!(i+1)^{i+1}}\sum_{j=0}^i \displaystyle\frac{i!(-1)^jx^{i+1}}{(i-j)!}\ln^{i-j}t+C\\
+        &=x+\sum_{i=1}^\infty\sum_{j=0}^i \displaystyle\frac{(-1)^jx^{i+1}}{(i+1)^{j+1}(i-j)!)}\ln^{i-j}x
+    \end{aligned}$$
+\end{solution}
+\chapter{Linear Algebra for learning}
+\section{martix}
+$$
+\left\{
+\begin{aligned}
+    &(\sum_{i=1}^n a_{1i}\times x_i=b_1\\
+    &\cdots\\
+    &(\sum_{1=1}^n a_{ni}\times x_i=b_n\\
+\end{aligned}
+\right.
+$$
+if $b_i=0,i\in[1,m],i\in\mathbb{N}^+$,we call such a system of linear equation a system of homogeneous linear equstions,otherwise we call it a system of nonhomogeneous linear equstions
+Such a system of linear equation can be written in a martix like below.
+$$
+\begin{bmatrix}
+a_{11} & \cdots & a_{1n}\\
+\vdots & \ddots & \vdots\\
+a_{n1} & \cdots & a_{nn}\\
+\end{bmatrix}
+$$
+if add $b_i$ into the martix,it will be like below.
+$$
+\left[
+\begin{array}{ccc|c}
+    a_{11} & \cdots & a_{1n} & b_1\\
+    \vdots & \ddots & \vdots & \vdots \\
+    a_{n1} & \cdots & a_{nn} & b_n\\
+\end{array}
+\right]
+$$
+\subsection{equivalent systems of equations}
+\begin{definition}
+    Two systems of equations involving the same variables are said to be equivalent if they have the same solution set.
+\end{definition}
+\begin{theorem} \label{Theorem2.1.1}
+    It's obvious that the thre options below can be used to obtain an equivalent system.\\
+    $\uppercase\expandafter{\romannumeral1}\quad$The order in which any two equations are written may be interchanged.\\
+    $\uppercase\expandafter{\romannumeral2}\quad$Both sides of an equation may be multiplied by the same nonzero real number.\\
+    $\uppercase\expandafter{\romannumeral3}\quad$A multiple of one equation may be added to (or subtracted from) another.\\
+\end{theorem}
+\begin{proof}
+    $$\uppercase\expandafter{\romannumeral1}\qquad\text{for a equivalent systems of equations}
+    \left[
+    \begin{array}{ccc|c}
+        a_{11} & \cdots & a_{1n} & b_1\\
+        \vdots & \ddots & \vdots & \vdots\\ 
+        a_{i1} & \cdots & a_{in} & b_i\\
+        a_{(i+1)1} & \cdots & a_{(i+1)n} & b_{(i+1)}\\
+        \vdots & \ddots & \vdots & \vdots \\
+        a_{n1} & \cdots & a_{nn} & b_n\\
+    \end{array}
+    \right]$$
+    $$\text{\and another equivalent systems of equations}
+    \left[
+    \begin{array}{ccc|c}
+        a_{11} & \cdots & a_{1n} & b_1\\
+        \vdots & \ddots & \vdots & \vdots \\
+        a_{(i+1)1} & \cdots & a_{(i+1)n} & b_{(i+1)}\\
+        a_{i1} & \cdots & a_{in} & b_i\\
+        \vdots & \ddots & \vdots & \vdots \\
+        a_{n1} & \cdots & a_{nn} & b_n\\
+    \end{array}
+    \right]$$
+    $$\text{if the former equivalent systems of equations has the solution set}
+        \left\{
+        \begin{aligned}
+            x_1=c_1\\
+            x_2=c_2\\
+            \vdots\\
+            x_n=c_n\\
+        \end{aligned}
+        \right.$$
+        $$\text{it's obivous that the latter equivalent systems of equations has the same solution set.}$$
+        $$\text{Similarly,if the $k$th equation and $j$th equation are interchanged,the solution set stay the same.}$$
+        $$$$
+        $$\uppercase\expandafter{\romannumeral2}\qquad\text{for a equivalent systems of equations}
+        \left[
+        \begin{array}{ccc|c}
+            a_{11} & \cdots & a_{1n} & b_1\\
+            \vdots & \ddots & \vdots & \vdots \\
+            a_{i1} & \cdots & a_{in} & b_i\\
+            \vdots & \ddots & \vdots & \vdots \\
+            a_{n1} & \cdots & a_{nn} & b_n\\
+        \end{array}
+        \right]$$
+        $$\text{\and another equivalent systems of equations}
+        \left[
+        \begin{array}{ccc|c}
+            a_{11} & \cdots & a_{1n} & b_1\\
+            \vdots & \ddots & \vdots & \vdots\\ 
+            k a_{i1} & \cdots & k a_{in} & k b_i\\
+            \vdots & \ddots & \vdots & \vdots\\
+            a_{n1} & \cdots & a_{nn} & b_n\\
+        \end{array}
+        \right],k\neq0$$
+        $$\text{if the former equivalent systems of equations has the solution set}
+            \left\{
+            \begin{aligned}
+                x_1=c_1\\
+                x_2=c_2\\
+                \vdots\\
+                x_n=c_n\\
+            \end{aligned}
+            \right.$$
+        $$\text{it's obivous that the latter equivalent systems of equations has the same solution set.}$$
+        $$$$
+        $$\uppercase\expandafter{\romannumeral3}\qquad\text{for a equivalent systems of equations}
+        \left[
+        \begin{array}{ccc|c}
+            a_{11} & \cdots & a_{1n} & b_1\\
+            \vdots & \ddots & \vdots & \vdots \\
+            a_{i1} & \cdots & a_{in} & b_i\\
+            \vdots & \ddots & \vdots & \vdots \\
+            a_{j1} & \cdots & a_{jn} & b_j\\
+            \vdots & \ddots & \vdots & \vdots\\ 
+            a_{n1} & \cdots & a_{nn} & b_n\\ 
+        \end{array}
+        \right]$$
+        $$\text{\and another equivalent systems of equations}
+        \left[
+        \begin{array}{ccc|c}
+            a_{11} & \cdots & a_{1n} & b_1\\
+            \vdots & \ddots & \vdots & \vdots\\ 
+            a_{i1} & \cdots & a_{in} & b_i\\
+            \vdots & \ddots & \vdots & \vdots \\
+            a_{j1}+ka_{i1} & \cdots & a_{jn}+ka_{in} & b_j+kb_i\\
+            \vdots & \ddots & \vdots & \vdots\\ 
+            a_{n1} & \cdots & a_{nn} & b_n\\
+        \end{array}
+        \right],k\neq0$$
+        $$\text{if the former equivalent systems of equations has the solution set}
+            \left\{
+            \begin{aligned}
+                x_1=c_1\\
+                x_2=c_2\\
+                \vdots\\
+                x_n=c_n\\
+            \end{aligned}
+            \right.$$
+        $$\text{it's obivous that the latter equivalent systems of equations has the same solution set.}$$
+\end{proof}
+\begin{definition}
+    A system is said to be in strict triangular form if, in the $k$th equation, the coefficients of the first $k−1$ variables are all zero and the coefficient of xk is nonzero
+($k=1,...,n$).
+\end{definition}
+By using Theorem $\ref{Theorem2.1.1}$,it's easy to turn a normal martix into a a strict triangular martix.
+\begin{definition}
+    Being the same as Theme $\ref{Theorem2.1.1}$,a operation rule can be defined to the martix named Elementary Row Operations.\\
+    $\uppercase\expandafter{\romannumeral1}\quad$Interchange two rows.\\
+    $\uppercase\expandafter{\romannumeral2}\quad$Multiply a row by a nonzero real number.\\
+    $\uppercase\expandafter{\romannumeral3}\quad$eplace a row by its sum with a multiple of another row.\\
+\end{definition}
+\begin{definition}
+    Obviously,only some of $n\times n$ martix have the equivalent systems of equations which is in strict triangular form.\\
+    However,an martix can always be turned into a row echelon form.\\
+    $\uppercase\expandafter{\romannumeral1}\quad$The first nonzero entry in each nonzero row is 1.\\
+    $\uppercase\expandafter{\romannumeral2}\quad$If row $k$ does not consist entirely of zeros, the number of leading zero entries in row $k+1$ is greater than the number of leading zero entries in row $k$.\\
+    $\uppercase\expandafter{\romannumeral3}\quad$If there are rows whose entries are all zero, they are below the rows having nonzero entries.\\
+\end{definition}
+\begin{definition}
+    The process of using row operations I, II, and III to transform a linear systeminto one whose augmented matrix is in row echelon form is called Gaussian
+elimination.
+\end{definition}
+\section{Determinant}
+\begin{definition}
+    a n-order determinant is 
+\end{definition}
+\chapter{Linear Algebra in system}
+\begin{definition}
+    If $V$ satisfy such axioms,
+
+    1.$\forall\;\mathbf{x},\mathbf{y}\in V,\mathbf{x}+\mathbf{y}=\mathbf{y}+\mathbf{x}$
+    
+    2.$\forall\;\mathbf{x},\mathbf{y},\mathbf{z}\in V,(\mathbf{x}+\mathbf{y})+\mathbf{z}=\mathbf{x}+(\mathbf{y}+\mathbf{z})$
+
+    3.$\exists\;\mathbf{0}\in V,\st \mathbf{x}+\mathbf{0}=\mathbf{x}$
+
+    4.$\forall\;\mathbf{x}\in V,\exists\;-\mathbf{x}\in V,\st \mathbf{x}+(-\mathbf{x})=0$
+
+    5.$\forall\;sclar\;\alpha,\forall\;\mathbf{x},\mathbf{y}\in V,\alpha(\mathbf{x}+\mathbf{y})=\alpha \mathbf{x}+\alpha \mathbf{y}$
+
+    6.$\forall\;sclar\;\alpha,\beta,\forall\;\mathbf{x}\in V,(\alpha+\beta)\mathbf{x}=\alpha \mathbf{x}+\beta \mathbf{x}$
+
+    7.$\forall\;sclar\;\alpha,\beta,\forall\;\mathbf{x}\in V,(\alpha\beta)\mathbf{x}=\alpha(\beta \mathbf{x})$
+
+    8.$\forall \mathbf{x}\in V,1\mathbf{x}=\mathbf{x}$
+
+    $V$ is called a vector space,and the element in $V$ is called vector.
+\end{definition}
+
+Obviously,Euclidean Space is one of vector space.
+\begin{definition}
+    Vector in Euclidean Space $\mathbb{R}^n$ is written as $\mathbf{x}=(x_1,\cdots,x_n)=\left[x_1,\cdots,x_n\right]\text{ or }\mathbf{x}=
+    \begin{bmatrix}
+        a_{11} \\
+        \vdots \\
+        a_{n1} \\
+    \end{bmatrix}
+    =
+    \left(
+        \begin{matrix}
+            a_{11} \\
+            \vdots \\
+            a_{n1} \\
+        \end{matrix}
+    \right)$.
+    
+    If a vector is an elementary of n-dimension Euclidean Space, the vector is called a n-dimension vector.
+\end{definition}
+\begin{definition}
+    $\vec{\mathbf{x}}+\vec{\mathbf{y}}=(x_1,\cdots,x_n)+(y_1,\cdots,y_n)=(x_1+y_1,\cdots,x_n+y_n)$
+\end{definition}
+\begin{definition}
+    $\text{For a sclar }\alpha,\alpha\cdot x=\alpha x=\alpha(x_1,\cdots,x_n)=(\alpha x_1,\cdots,\alpha x_n)$
+\end{definition}
+\begin{definition}
+    If the vector is represented as $(x_1,\cdots,x_n)=\left[x_1,\cdots,x_n\right]$,we call the vector row vector,written as $\vec{\mathbf{x}}$,else we call it column vector,written as $\vec{x}$.In most cases,we use column vector as vector.A arbitrary vector is written as $\mathbf{x}$.
+\end{definition}
+\begin{definition}
+    Basis is used to represent the vector in Euclidean Space, through which every vector in Euclidean Space can be represented uniquely through $\sum\limits_{i=1}^{n}c_i\mathbf{x}_i,c_i$ is a sclar. 
+\end{definition}
+
+Obviously, in Euclidean Space，the vector does not depend on the basis of the vector space, but the representation of the vector depends on the basis of the vector space.At first, the vector's representation is baesd on the standard basis in Euclidean Space.
+\begin{definition}
+    $\vec{e_1}=
+        \begin{bmatrix}
+            1 \\
+            0 \\
+            \vdots \\
+            0 \\
+        \end{bmatrix}$
+
+    $\vec{e_2}=
+        \begin{bmatrix}
+            0 \\
+            1 \\
+            0 \\
+            \vdots \\
+            0 \\
+        \end{bmatrix}$
+
+    $\vdots$
+
+    $\vec{e_n}=
+        \begin{bmatrix}
+            0 \\
+            \vdots \\
+            0 \\
+            1 \\
+        \end{bmatrix}$
+
+    An n-dimension Euclidean Space,its standard basis includes n vectors.
+
+    $\{\vec{e_1},\cdots,\vec{e_n}\}$ is the standard basis of the Euclidean Space.
+\end{definition}
+
+Despite such operation defined above, there's an operation rule which changes the basis of the vector space, which can also be understood as change the vector itself.
+\begin{definition}
+    $A_{m\times n}=A_{mn}=\left[\vec{a_1},\cdots,\vec{a_n}\right]=(\vec{a_1},\cdots,\vec{a_n})=
+    \begin{bmatrix}
+        a_{11} & \cdots & a_{1n}\\
+        \vdots & \ddots & \vdots\\
+        a_{m1} & \cdots & a_{mn}\\
+    \end{bmatrix}
+    =\left(
+        \begin{matrix}
+            a_{11} & \cdots & a_{1n}\\
+            \vdots & \ddots & \vdots\\
+            a_{m1} & \cdots & a_{mn}\\
+        \end{matrix}
+    \right)=
+    \begin{bmatrix}
+        \vec{\mathbf{a_1}} \\
+        \vdots \\
+        \vec{\mathbf{a_m}} \\
+    \end{bmatrix}
+    =(a_{i,j})_{m\times n}=(a_{ij})=(a_{ij})_{mn}$
+\end{definition}
+\begin{definition}
+    $A_{m\times n}+B_{m\times n}=\left[\vec{a_1}+\vec{b_1},\cdots,\vec{a_n}+\vec{b_n}\right]=
+    \begin{bmatrix}
+        a_{11}+b_{11} & \cdots & a_{1n}+b_{1n}\\
+        \vdots & \ddots & \vdots\\
+        a_{m1}+b_{m1} & \cdots & a_{mn}+b_{mn}\\
+    \end{bmatrix}$
+\end{definition}
+\begin{definition}
+    For a sclar $\alpha$, $\alpha A=(\alpha a_{ij})$
+\end{definition}
+\begin{definition}
+    $A_{m\times n}B_{n\times k}=(\sum\limits_{l=1}^{n}a_{i,l}b_{l,j})_{m\times k}=(\vec{a_i}\cdot\vec{\mathbf{b}_j})=(A\vec{\mathbf{b}_1},\cdots,A\vec{\mathbf{b}_k})$
+\end{definition}
+
+Such operations can be noticed easily.
+Obviously, matrix $A$ multiplies matrix $B$ doesn't equal to matrix $B$ multiplies matrix $A$ in most cases.
+
+$A+B=B+A$
+
+$(A+B)+C=A+(B+C)$
+
+$(AB)C=A(BC)$
+
+$A(B+C)=AB+AC$
+
+$(B+C)A=BA+CA$
+
+$(\lambda\mu)A=\lambda(\mu A)=\mu(\lambda A)$
+
+$\alpha(AB)=(\alpha A)B=A(\alpha B)$
+
+$(\alpha+\beta)A=\alpha A+\beta B$
+
+$\alpha(A+B)=\alpha A+\alpha B$
+\begin{definition}
+    Matrix $A_{nn}$ can be also called square matrix.
+\end{definition}
+\begin{definition}
+    $I_n=(\vec{e_1},\cdots,\vec{e_n})$,,which is also written as $I$. 
+\end{definition}
+
+$I_n$ is a special matrix which satisfy such operations below:
+
+$AI=IA=A$,which means $I_n$ is the identity elementary of the matrix multiplicative.
+\begin{definition}
+    $O_n=0I$,which is also written as $O$. 
+\end{definition}
+
+$O_n$ is a special matrix which satisfy such operations below:
+
+$O_n+A=A,A$is a n-dimension square matrix,which means that $O_n$ is the identity elementary of the matrix addition.
+
+$O_nA=AO_n=O_n,A=(a_{ij})_{nn}$
+
+$\exists A_{nm}\neq O,B_{mn}\neq O,\st AB=O$
+\begin{definition}
+    $A=(a_{ij})_{mn}=    
+    \begin{bmatrix}
+        a_{11} & \cdots & a_{1n}\\
+        \vdots & \ddots & \vdots\\
+        a_{m1} & \cdots & a_{mn}\\
+    \end{bmatrix}
+    ,A^\mathsf{T}=(a_{ji})_{nm}=
+    \begin{bmatrix}
+        a_{11} & \cdots & a_{m1}\\
+        \vdots & \ddots & \vdots\\
+        a_{1n} & \cdots & a_{mn}\\
+    \end{bmatrix}$
+\end{definition}
+\begin{definition}
+    If $\exists$ square matrix $A,B,\st AB=BA=I$,$A$ and $B$ is nonsigular,and $A$ and $B$ is the multiplicative inverse of each other.$B$ can be written as $A^{-1}$. 
+\end{definition}
+\begin{theorem}
+    If $A$ is nonsigular, $\exists!\;B,\;\st AB=I$.
+\end{theorem}
+\begin{definition}
+    If $A=A^\mathsf{T}$, A is a symmetric matrix.
+
+    If $A+A^\mathsf{T}=O$, A is a skew-symmetric matrix.
+\end{definition}
+
+
+\end{document}
